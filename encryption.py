@@ -25,7 +25,7 @@ def save_key(key, key_file):
 def encrypt_file(input_file, output_file, stego_image_file):
     backend = default_backend()
 
-    # generate 256 bit key
+    # generate 256-bit key
     key = os.urandom(32)
 
     # hide key in image
@@ -58,7 +58,7 @@ def encrypt_file(input_file, output_file, stego_image_file):
 # main
 while True:
     try:
-        file_to_encrypt = input("What file to encrypt?: ")
+        file_to_encrypt = input("What file to encrypt? Include file format: ")
         if file_to_encrypt.lower() == "exit":
             print("Exiting the program...")
             sys.exit()
@@ -69,15 +69,18 @@ while True:
             encrypted_file_name = input("What to name your encrypted file?: ")
             encrypted_file_name = ensure_extension(encrypted_file_name, ".bin")
 
-            stego_image_file = input("Enter the path to the image file for hiding the key: ")
 
-            if " " not in encrypted_file_name and os.path.isfile(stego_image_file):
-                encrypt_file(file_to_encrypt, encrypted_file_name, stego_image_file)
-                print(f"Encrypted file saved as: {encrypted_file_name}")
-                print(f"Key hidden in image: {stego_image_file}.png")
-                break
+            if " " not in encrypted_file_name:
+                stego_image_file = input("Enter the path to the image file for hiding the key: ")
+                if os.path.isfile(stego_image_file):
+                    encrypt_file(file_to_encrypt, encrypted_file_name, stego_image_file)
+                    print(f"Encrypted file saved as: {encrypted_file_name}")
+                    print(f"Key hidden in image: {stego_image_file}.png")
+                    break
+                else:
+                    print("Image file not found. try again")
             else:
-                print("Invalid name or image file not found. Please try again.")
+                print("Invalid name.Name can't contain spaces. Please try again.")
 
     except FileNotFoundError:
         print(f"No such file: {file_to_encrypt} - Please try again.")
