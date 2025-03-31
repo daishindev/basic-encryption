@@ -24,12 +24,12 @@ Install the required packages:
    ```
 
 ## Usage
-As i mentioned before, this is a very basic encryption, it isnt supposed to be super serious.
+As I mentioned before, this is a very basic encryption, it isnt supposed to be super serious. I used it to store some simple things in the images on my computer, it was basically a few hour project out of neccessity and to challenge myself to work with something I had no experience in - crypthography.
 ### Encryption
 Run the `encryption.py` script and follow the prompts:
 
 ```
-python encryption.py
+python3 encryption.py
 ```
 
 You will be asked for:
@@ -44,7 +44,7 @@ The script will create an encrypted .bin file and a new image file with the hidd
 Run the `decrypt.py` script and follow the prompts:
 
 ```
-python decrypt.py
+python3 decrypt.py
 ```
 
 You will be asked for:
